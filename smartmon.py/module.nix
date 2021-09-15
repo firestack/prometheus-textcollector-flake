@@ -26,6 +26,17 @@
 	systemd.services.smartmonpy = {
 		description = "S.M.A.R.T.(smartmon py) prometheus collector";
 		wantedBy = [ "multi-user.target" ];
+		
+		serviceConfig.Type = "oneshot";
 		serviceConfig.ExecStart = "${cfg.package.meta.mainProgram} ${lib.concatStringsSep " " cfg.extraOptions} > ${cfg.outFile}";
-	};};
+		
+	};
+
+	timers.smartmonpy-timer = {
+			wantedBy = [ "timers.target" ];
+			partOf = [ "smartmonpy.service" ];
+			timerConfig.OnCalendar = "30m";
+			timerConfig.Persistent = true;
+	};
+	};
 }
