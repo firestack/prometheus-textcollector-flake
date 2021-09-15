@@ -14,7 +14,7 @@
         let
           pkgs = import nixpkgs {
             inherit system;
-            overlays = [ self.overlay (_:_:{ inherit scripts; })];
+            overlays = [ self.overlay ];
           };
         in {
           inherit (pkgs) smartmon-py;
@@ -34,7 +34,7 @@
       checks = self.packages;
 
       overlay = final: prev: {
-        smartmon-py = final.callPackage ./smartmon.py {};
+        smartmon-py = final.callPackage ./smartmon.py { inherit scripts; };
       };
 
       nixosModules.smartmon-py = import ./smartmon.py/module.nix;
