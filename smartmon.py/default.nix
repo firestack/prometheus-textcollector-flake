@@ -1,4 +1,4 @@
-{ scripts, python3Packages }: python3Packages.buildPythonPackage {
+{ scripts, python3Packages }: let smartmon = python3Packages.buildPythonPackage {
   pname = "smartmon.py";
   version = "1";
   src = (toString scripts);
@@ -11,5 +11,6 @@
   cp $src/smartmon.py $out/bin/
   '';
 
-  meta.mainProgram = "${placeholder "out"}/bin/smartmon.py";
-}
+  meta.mainProgram = "${smartmon}/bin/smartmon.py";
+
+}; in smartmon
