@@ -23,12 +23,15 @@
 	};
 
 	config = lib.mkIf cfg.enable {
-	systemd.services.smartmonpy = {
+	systemd.services.smartmonpy = let 
+	wrapper = pkgs.writeShellScript "smartmonpy" ''
+	${cfg.package.meta.mainProgram} ${lib.concatStringsSep " " cfg.extraOptions} > ${cfg.outFile}
+	''; in {
 		description = "S.M.A.R.T.(smartmon py) prometheus collector";
 		wantedBy = [ "multi-user.target" ];
 		
 		serviceConfig.Type = "oneshot";
-		serviceConfig.ExecStart = "${cfg.package.meta.mainProgram} ${lib.concatStringsSep " " cfg.extraOptions} > ${cfg.outFile}";
+		serviceConfig.ExecStart = wrapper;
 		
 	};
 
