@@ -1,0 +1,58 @@
+{
+  "nodes": {
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1631561581,
+        "narHash": "sha256-3VQMV5zvxaVLvqqUrNz3iJelLw30mIVSfZmAaauM3dA=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "7e5bf3925f6fbdfaf50a2a7ca0be2879c4261d19",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1631708626,
+        "narHash": "sha256-WhrEx9hlzhv8tta3hyMIMXsMSWAdB1feTkgvw2gQG7s=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "ddbbf5d80bcee06ff62b0fb53d926e9c8b1174d6",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "root": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": "nixpkgs",
+        "scripts": "scripts"
+      }
+    },
+    "scripts": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1611440149,
+        "narHash": "sha256-KNXja6ry1AAVluKgPt5Wab2HdalRV+0a7IeshQ4dSo4=",
+        "owner": "prometheus-community",
+        "repo": "node-exporter-textfile-collector-scripts",
+        "rev": "414fb44693444cb96a55c7152cdd84d531888e1f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "prometheus-community",
+        "repo": "node-exporter-textfile-collector-scripts",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
