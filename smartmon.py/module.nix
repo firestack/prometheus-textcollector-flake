@@ -31,7 +31,7 @@
 	wrapper = pkgs.writeShellScript "smartmonpy" ''
 	${cfg.package.meta.mainProgram} ${lib.concatStringsSep " " cfg.extraOptions} > ${cfg.outFile}
 	''; in {
-		paths = [ pkgs.smartmontools ];
+		path = [ pkgs.smartmontools ];
 		description = "S.M.A.R.T.(smartmon py) prometheus collector";
 		wantedBy = [ "multi-user.target" ];
 		
