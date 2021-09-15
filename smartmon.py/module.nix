@@ -8,6 +8,10 @@
 			default = pkgs.smartmon-py;
 			type = lib.types.package;
 		};
+		program = lib.mkOption {
+			type = lib.types.path;
+			default = "${cfg.package}/bin/smartmonpy.py";
+		};
 		extraOptions = lib.mkOption {
 			description = "Extra arguments passed to smartmonpy";
 			default = [];
@@ -27,6 +31,7 @@
 	wrapper = pkgs.writeShellScript "smartmonpy" ''
 	${cfg.package.meta.mainProgram} ${lib.concatStringsSep " " cfg.extraOptions} > ${cfg.outFile}
 	''; in {
+		paths = [ pkgs.smartmontools ];
 		description = "S.M.A.R.T.(smartmon py) prometheus collector";
 		wantedBy = [ "multi-user.target" ];
 		
