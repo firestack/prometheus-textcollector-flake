@@ -10,7 +10,7 @@
 		};
 		extraOptions = lib.mkOption {
 			description = "Extra arguments passed to smartmonpy";
-			default = "";
+			default = [];
 			type = with lib.types; listOf str;
 		};
 
