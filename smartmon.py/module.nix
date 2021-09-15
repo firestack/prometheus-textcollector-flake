@@ -32,10 +32,10 @@
 		
 	};
 
-	timers.smartmonpy-timer = {
+	systemd.timers.smartmonpy-timer = {
 			wantedBy = [ "timers.target" ];
 			partOf = [ "smartmonpy.service" ];
-			timerConfig.OnCalendar = "30m";
+			timerConfig.OnCalendar = "*:00/30:00";
 			timerConfig.Persistent = true;
 	};
 	};
