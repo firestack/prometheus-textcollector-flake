@@ -31,7 +31,7 @@
 	wrapper = pkgs.writeShellScript "nvme-metrics" ''
 	${cfg.package.meta.mainProgram} ${lib.concatStringsSep " " cfg.extraOptions} > ${cfg.outFile}
 	''; in {
-		path = [ pkgs.smartmontools ];
+		path = [ pkgs.smartmontools pkgs.nvme-cli ];
 		description = "S.M.A.R.T.(nvme py) prometheus collector";
 		wantedBy = [ "multi-user.target" ];
 		
