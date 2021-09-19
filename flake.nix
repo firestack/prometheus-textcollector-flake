@@ -17,7 +17,7 @@
             overlays = [ self.overlay ];
           };
         in {
-          inherit (pkgs) smartmon-py;
+          inherit (pkgs) smartmon-py nvme-metrics;
         };
 
         apps = {
@@ -35,6 +35,7 @@
 
       overlay = final: prev: {
         smartmon-py = final.callPackage ./smartmon.py { inherit scripts; };
+        nvme-metrics = final.callPackage ./nvme.py { };
       };
 
       nixosModules.smartmon-py = import ./smartmon.py/module.nix;
