@@ -5,12 +5,13 @@
 
   Python = true;
   format = "other";
-  buildInputs = [ nvme-cli ];
+  propogatedBuildInputs = [ nvme-cli ];
+  
   installPhase = ''
     mkdir -p $out/bin
     cp $src/nvme-metrics.py $out/bin/
   '';
 
-  meta.mainProgram = "${nvme-metrics}";
+  meta.mainProgram = "${nvme-metrics}/bin/nvme-metrics.py";
 
 }; in nvme-metrics

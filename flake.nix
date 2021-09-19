@@ -26,6 +26,12 @@
             description = "smartmon-py";
             program = "${self.packages.${system}.smartmon-py.meta.mainProgram}";
           };
+
+          nvme-metrics = {
+            type = "app";
+            description = "nvme-metrics-py";
+            program = "${self.packages.${system}.nvme-metrics.meta.mainProgram}";
+          };
         };
 
         defaultPackage = self.packages.${system}.smartmon-py;
@@ -39,5 +45,6 @@
       };
 
       nixosModules.smartmon-py = import ./smartmon.py/module.nix;
+      nixosModules.nvme-metrics-py = import ./nvme.py/module.nix;
     };
 }
